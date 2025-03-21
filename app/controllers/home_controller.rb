@@ -3,7 +3,7 @@ class HomeController < ApplicationController
       render plain: "Hello, World!"
     end
     def home
-        render json: { message: "Welcome to my first Rails projecttt" }
+        render json: { message: "Welcome to my first Rails project" }
     end
   end
   
