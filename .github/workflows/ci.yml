@@ -38,6 +38,9 @@ jobs:
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
+      - name: Install dependencies
+        run: bundle install
+
   lint:
     runs-on: ubuntu-latest
     steps:
