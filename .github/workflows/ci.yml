@@ -38,8 +38,8 @@ jobs:
       - name: Scan for security vulnerabilities in JavaScript dependencies
         run: bin/importmap audit
 
-      - name: Install dependencies
-        run: bundle install
+      
+  
 
   lint:
     runs-on: ubuntu-latest
@@ -91,3 +91,18 @@ jobs:
           name: screenshots
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Make bin scripts executable
+        run: chmod +x bin/*
+
+      - name: Scan for common Rails security vulnerabilities using static analysis
+        run: bundle exec brakeman --no-pager
+
+      - name: Lint the code
+        run: bundle exec rubocop
+
+      - name: Run tests
+        run: bundle exec rails test
